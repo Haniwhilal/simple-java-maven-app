@@ -1,29 +1,14 @@
 pipeline {
     agent any
+    parmeters {
+        string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Branch to build')
+        booleanParam(name: 'SKIP_TESTS', defaultValue: true, description: 'Skip tests during build')
+    }
     stages {
-        stage('Build') {
+        stage('Demo') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
-        stage('Deliver') { 
-            steps {
-                sh './jenkins/scripts/deliver.sh' 
-            }
-        }
-        stage('Complete') {
-            steps {
-                echo 'Pipeline completed successfully!'
+                echo 'boolean param is set to: ${params.SKIP_TESTS}'
+                echo 'string param is set to: ${params.BRANCH_NAME}'
             }
         }
     }
