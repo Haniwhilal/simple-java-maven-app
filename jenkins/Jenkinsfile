@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('Demo') {
             steps {
-                echo "boolean param is set to: ${params.SKIP_TESTS}"
-                echo "string param is set to: ${params.BRANCH_NAME}"
+                echo "boolean param Bbranch nameis set to: ${params.SKIP_TESTS}"
+                echo "string param skip tests is set to: ${params.BRANCH_NAME}"
             }
         }
     }
