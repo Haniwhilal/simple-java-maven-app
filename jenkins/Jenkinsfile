@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    parmeters {
+    parameters {
         string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Branch to build')
         booleanParam(name: 'SKIP_TESTS', defaultValue: true, description: 'Skip tests during build')
     }
